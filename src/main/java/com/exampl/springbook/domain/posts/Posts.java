@@ -8,6 +8,7 @@ import javax.persistence.*;
 
     @Getter
     @NoArgsConstructor
+    @Table
     @Entity
     public class Posts extends BaseTimeEntity{
 
@@ -15,10 +16,10 @@ import javax.persistence.*;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        @Column(length = 500, nullable = false)
+        @Column(length = 500, nullable = true)
         private String title;
 
-        @Column(columnDefinition = "TEXT", nullable = false)
+        @Column(columnDefinition = "TEXT", nullable = true)
         private String content;
 
         private String author;
@@ -34,4 +35,6 @@ import javax.persistence.*;
             this.title = title;
             this.content = content;
         }
+
+
     }

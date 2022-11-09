@@ -1,11 +1,15 @@
 package com.exampl.springbook.web;
 
 import com.exampl.springbook.domain.posts.PostsService;
+import com.exampl.springbook.web.dto.PostsListResponseDto;
 import com.exampl.springbook.web.dto.PostsResponseDto;
 import com.exampl.springbook.web.dto.PostsSaveRequestDto;
 import com.exampl.springbook.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,6 +30,13 @@ public class PostsApiController {
     @GetMapping("/api/v1/posts/{id}")
     public PostsResponseDto findById (@PathVariable Long id){
         return postsService.findById(id);
+    }
+
+
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id){
+        postsService.delete(id);
+        return id;
     }
 
 }
