@@ -35,4 +35,13 @@ application-oauth.properties
 /.nb-gradle/
 
 ### VS Code ###
-.vscode/
+.vscode/### Example user template template
+### Example user template
+
+# IntelliJ project files
+.gradle
+application-oauth.properties
+.idea
+*.iml
+out
+gen
