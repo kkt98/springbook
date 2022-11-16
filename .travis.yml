@@ -15,21 +15,21 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r spring-book *
+  - zip -r springbook ./*
   - mkdir -p deploy
-  - mv spring-book.zip deploy/spring-book.zip
+  - mv springbook.zip deploy/springbook.zip
 
 deploy:
   - provider: s3
-    access_key_id: $AWS_ACCESS_KEY # Travis repo Settings에 설정된값
+    access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
 
-    bucket: kkt-springbook-build #s3 버킷
+    bucket: kkt-springbook-build #S3 버킷 이름
     region: ap-northeast-2
     skip_cleanup: true
-    acl: private #ZIP 파일 접근을 private
-    local_dir: deploy #befor_deploy에서 생성한 디렉토리
-    wait-until-deployed: true
+    acl: private #zip 파일 접근 private으로
+    local_dir: deploy #before_deploy에서 생성한 디렉토리
+    wait_until_deployed : true
 
 # CI 실행 완료 시 메일로 알람
 notifications:
