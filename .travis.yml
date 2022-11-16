@@ -16,7 +16,7 @@ script: "./gradlew clean build"
 
 before_deploy:
   - zip -r springbook *
-  -  mkdir -p deploy
+  - mkdir -p deploy
   - mv springbook.zip deploy/springbook.zip
 
 deploy:
