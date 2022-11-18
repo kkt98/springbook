@@ -21,7 +21,7 @@ before_deploy:
   - cp build/libs/*.jar before-deploy/
   - cd before-deploy && zip -r before-deploy * # before-deploy로 이동후 전체 압축
   - cd ../ && mkdir -p deploy # 상위 디렉토리로 이동후 deploy 디렉토리 생성
-  - mv before-deploy/before-deploy.zip deploy/SpringBootWebService.zip # deploy로 zip파일 이동
+  - mv before-deploy/before-deploy.zip deploy/springbook.zip # deploy로 zip파일 이동
 
 deploy: # 외부 서비스와 연동될 행위들을 선언
   - provider: s3
@@ -45,8 +45,6 @@ deploy: # 외부 서비스와 연동될 행위들을 선언
     region: ap-northeast-2
     wait-until-deployed: true
 
-
-# CI 실행 완료 시 메일로 알람
 notifications:
   email:
     recipients:
