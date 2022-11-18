@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //권한 관리 대상을 지정하는 옵션
                 .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll() //전체 열람 권한
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name()) //USER 권한만 열람
+                .antMatchers("/api/v1/**").hasRole(Role.GUEST.name()) //USER 권한만 열람
                 .anyRequest().authenticated()// (anyRequest)-위에 설정된 값 이외의 나머지 URL을 나타냄, (authenticated)-인증된 사용자만 열람가능
                 .and().logout().logoutSuccessUrl("/") //로그아웃 성공시 (/) 의 URL로 이동
                 .and().oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
